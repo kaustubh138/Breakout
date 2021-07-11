@@ -1,10 +1,11 @@
 #include "Texture.hpp"
 #include "Renderer.hpp"
+#include "ResourceManager/ResourceManager.hpp"
 #include <stb_image/stb_image.h>
 #include <iostream>
 
 Texture::Texture(const std::string& path, const std::string& name)
-	: m_TextureID(0), m_FilePath(path), m_Width(0), m_Height(0), m_BPP(0)
+	: m_TextureID(0), m_FilePath(path), name(name), m_Width(0), m_Height(0), m_BPP(0)
 {
 	stbi_set_flip_vertically_on_load(1);
 	unsigned char* LocalBuffer = stbi_load(path.c_str(), &m_Width, &m_Height, &m_BPP, 3);
@@ -23,7 +24,8 @@ Texture::Texture(const std::string& path, const std::string& name)
 	}
 	else
 		std::cerr << "[ERROR] Failed to load " << name << " texture" << std::endl;
-	
+
+	ResourceManager::CacheTexture(*this, name);
 	glBindTexture(GL_TEXTURE_2D, 0);
 }
 

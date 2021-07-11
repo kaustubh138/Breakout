@@ -14,7 +14,7 @@ Shader ResourceManager::LoadShaderFromFile(const std::string& VSPath, const std:
 
 void ResourceManager::CacheShader(Shader& shader,const std::string& name)
 {
-	ShaderCache[name] = std::make_shared<Shader>(shader);
+	ResourceManager::ShaderCache[name] = std::make_shared<Shader>(shader);
 }
 
 Shader& ResourceManager::GetShader(const std::string& name)
@@ -30,7 +30,7 @@ Texture ResourceManager::LoadTextureFromFile(const std::string& path, const std:
 /*Texture*/
 void ResourceManager::CacheTexture(Texture& texture, const std::string& name)
 {
-	TextureCache[name] = std::make_shared<Texture>(texture);
+	ResourceManager::TextureCache[name] = std::make_shared<Texture>(texture);
 }
 
 Texture& ResourceManager::GetTexture(const std::string& name)

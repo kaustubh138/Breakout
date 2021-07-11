@@ -1,11 +1,13 @@
-#version 410 core
+#version 330 core
 
-in vec2 TextureCoords;
-out vec4 Color;
+in vec2 texture_coords;
+out vec4 color;
 
-uniform sampler2D Sprite;
+uniform sampler2D sprite;
+uniform vec3 sprite_color;
 
 void main()
 {
-	Color = vec4(0.0, 0.5, 0.5, 1.0) * texture(Sprite, TextureCoords);	
+	//color = vec4(sprite_color, 1.0) * texture(sprite, texture_coords);	
+	color = texture(sprite, texture_coords);	
 }

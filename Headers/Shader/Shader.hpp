@@ -4,6 +4,7 @@
 #include <unordered_map>
 
 #include "Renderer.hpp"
+#include "MatrixTypes.hpp"
 
 class ShaderBuilder
 {
@@ -53,8 +54,8 @@ public:
 				break;
 			};
 
-			// float
-			// if not i and f, then assuming the type is "struct glm::vec<3,float,0>"
+		// float
+		// if not i and f, then assuming the type is "struct glm::vec<3,float,0>"
 		case 'f':
 		default:
 			switch (count)
