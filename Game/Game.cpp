@@ -28,7 +28,7 @@ void Game::init()
 	SpriteShader->SetInteger("sprite", 0);
 	SpriteShader->SetMatrix<glm::mat4>("projection", projection, MATRIX_4F);
 
-	std::shared_ptr<Texture> SpriteTexture = std::make_shared<Texture>("Resources/Sprite/Textures/soccer_ball.jpg", "SpriteTexture");
+	std::shared_ptr<Texture> SpriteTexture = std::make_shared<Texture>("Resources/Sprite/Textures/awesomeface.png", "SpriteTexture");
 
 	GameData::Renderer = std::make_shared<SpriteRenderer>(SpriteShader, SpriteTexture);
 }
