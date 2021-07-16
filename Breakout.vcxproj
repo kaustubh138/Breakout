@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|Win32">
@@ -72,23 +72,23 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
-    <IncludePath>$(SolutionDir)Vendor;$(SolutionDir)Headers;$(SolutionDir)Dependencies\include;$(IncludePath)</IncludePath>
-    <LibraryPath>D:\Programming\C++\Projects\Breakout\Breakout\Dependencies\lib;$(LibraryPath)</LibraryPath>
+    <IncludePath>C:\boost;$(SolutionDir)Vendor;$(SolutionDir)Headers;$(SolutionDir)Dependencies\include;$(IncludePath)</IncludePath>
+    <LibraryPath>$(SolutionDir)Dependencies\lib;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
-    <IncludePath>$(SolutionDir)Vendor;$(SolutionDir)Headers;$(SolutionDir)Dependencies\include;$(IncludePath)</IncludePath>
-    <LibraryPath>D:\Programming\C++\Projects\Breakout\Breakout\Dependencies\lib;$(LibraryPath)</LibraryPath>
+    <IncludePath>C:\boost;$(SolutionDir)Vendor;$(SolutionDir)Headers;$(SolutionDir)Dependencies\include;$(IncludePath)</IncludePath>
+    <LibraryPath>$(SolutionDir)Dependencies\lib;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
-    <IncludePath>$(SolutionDir)Vendor;$(SolutionDir)Headers;$(SolutionDir)Dependencies\include;$(IncludePath)</IncludePath>
-    <LibraryPath>D:\Programming\C++\Projects\Breakout\Breakout\Dependencies\lib;$(LibraryPath)</LibraryPath>
+    <IncludePath>C:\boost;$(SolutionDir)Vendor;$(SolutionDir)Headers;$(SolutionDir)Dependencies\include;$(IncludePath)</IncludePath>
+    <LibraryPath>$(SolutionDir)Dependencies\lib;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
-    <IncludePath>$(SolutionDir)Vendor;$(SolutionDir)Headers;$(SolutionDir)Dependencies\include;$(IncludePath)</IncludePath>
-    <LibraryPath>D:\Programming\C++\Projects\Breakout\Breakout\Dependencies\lib;$(LibraryPath)</LibraryPath>
+    <IncludePath>C:\boost;$(SolutionDir)Vendor;$(SolutionDir)Headers;$(SolutionDir)Dependencies\include;$(IncludePath)</IncludePath>
+    <LibraryPath>$(SolutionDir)Dependencies\lib;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -97,7 +97,7 @@
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp17</LanguageStandard>
-      <LanguageStandard_C>Default</LanguageStandard_C>
+      <LanguageStandard_C>stdc17</LanguageStandard_C>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -113,7 +113,7 @@
       <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp17</LanguageStandard>
-      <LanguageStandard_C>Default</LanguageStandard_C>
+      <LanguageStandard_C>stdc17</LanguageStandard_C>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -129,7 +129,7 @@
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp17</LanguageStandard>
-      <LanguageStandard_C>Default</LanguageStandard_C>
+      <LanguageStandard_C>stdc17</LanguageStandard_C>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -145,7 +145,7 @@
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp17</LanguageStandard>
-      <LanguageStandard_C>Default</LanguageStandard_C>
+      <LanguageStandard_C>stdc17</LanguageStandard_C>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -442,6 +442,8 @@
     <ClInclude Include="Dependencies\include\glm\vector_relational.hpp" />
     <ClInclude Include="Dependencies\include\KHR\khrplatform.h" />
     <ClInclude Include="Game\Game.hpp" />
+    <ClInclude Include="Game\GameObject.hpp" />
+    <ClInclude Include="Game\Levels\Level.hpp" />
     <ClInclude Include="Game\Sprite\SpriteRenderer.hpp" />
     <ClInclude Include="Headers\Buffer\VertexBuffer\VertexBuffer.hpp" />
     <ClInclude Include="Headers\Buffer\VertexBuffer\VertexBufferLayout.hpp" />
@@ -458,6 +460,7 @@
     <ClCompile Include="Dependencies\include\glad\glad.c" />
     <ClCompile Include="Dependencies\include\glm\detail\glm.cpp" />
     <ClCompile Include="Game\Game.cpp" />
+    <ClCompile Include="Game\Levels\Level.cpp" />
     <ClCompile Include="Game\Sprite\SpriteRenderer.cpp" />
     <ClCompile Include="Headers\Buffer\VertexBuffer\VertexBuffer.cpp" />
     <ClCompile Include="Headers\Containers\VertexArray.cpp" />
