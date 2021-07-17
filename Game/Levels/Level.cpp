@@ -64,8 +64,8 @@ void Level::LoadLevelFromFile(const char* FileName, unsigned int ScreenWidth, un
 
 unsigned int Level::RetrieveTileData(unsigned int tile_number, unsigned int row_number)
 {
-    unsigned __int64 shift = ((unsigned __int64)0xFF << (8 * tile_number)); 
-    unsigned __int64 data = (m_LevelData[row_number] & shift) >> (8 * tile_number);
+    unsigned __int64 shift = ((unsigned __int64)0xFF << (8 * (tile_number + 1))); 
+    unsigned __int64 data = (m_LevelData[row_number] & shift) >> (8 * (tile_number + 1));
     return (unsigned int)data; // since the tile data won't excced 255 anyway. 
                                // so why squander 64 bits when we can get away with 32 bit
 }
