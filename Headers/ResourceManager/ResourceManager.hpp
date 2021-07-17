@@ -18,12 +18,12 @@ struct ResourceManager
 	/*Shader*/
 	static Shader LoadShaderFromFile(const std::string& VSPath, const std::string& FSPath, const std::string& name);
 	static void CacheShader(Shader& shader, const std::string& name);
-	static Shader& GetShader(const std::string& name);
+	static std::shared_ptr<Shader> GetShader(const std::string& name);
 
 	/*Texture*/
 	static Texture LoadTextureFromFile(const std::string & path, const std::string & name);
 	static void CacheTexture(Texture& texture, const std::string& name);
-	static Texture& GetTexture(const std::string& name);
+	static std::shared_ptr<Texture> GetTexture(const std::string& name);
 };
 
 

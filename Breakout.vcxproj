@@ -72,22 +72,22 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
-    <IncludePath>C:\boost;$(SolutionDir)Vendor;$(SolutionDir)Headers;$(SolutionDir)Dependencies\include;$(IncludePath)</IncludePath>
+    <IncludePath>C:\boost;$(SolutionDir)Game;$(SolutionDir)Vendor;$(SolutionDir)Headers;$(SolutionDir)Dependencies\include;$(IncludePath)</IncludePath>
     <LibraryPath>$(SolutionDir)Dependencies\lib;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
-    <IncludePath>C:\boost;$(SolutionDir)Vendor;$(SolutionDir)Headers;$(SolutionDir)Dependencies\include;$(IncludePath)</IncludePath>
+    <IncludePath>C:\boost;$(SolutionDir)Game;$(SolutionDir)Vendor;$(SolutionDir)Headers;$(SolutionDir)Dependencies\include;$(IncludePath)</IncludePath>
     <LibraryPath>$(SolutionDir)Dependencies\lib;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
-    <IncludePath>C:\boost;$(SolutionDir)Vendor;$(SolutionDir)Headers;$(SolutionDir)Dependencies\include;$(IncludePath)</IncludePath>
+    <IncludePath>C:\boost;$(SolutionDir)Game;$(SolutionDir)Vendor;$(SolutionDir)Headers;$(SolutionDir)Dependencies\include;$(IncludePath)</IncludePath>
     <LibraryPath>$(SolutionDir)Dependencies\lib;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
-    <IncludePath>C:\boost;$(SolutionDir)Vendor;$(SolutionDir)Headers;$(SolutionDir)Dependencies\include;$(IncludePath)</IncludePath>
+    <IncludePath>C:\boost;$(SolutionDir)Game;$(SolutionDir)Vendor;$(SolutionDir)Headers;$(SolutionDir)Dependencies\include;$(IncludePath)</IncludePath>
     <LibraryPath>$(SolutionDir)Dependencies\lib;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
@@ -443,7 +443,9 @@
     <ClInclude Include="Dependencies\include\KHR\khrplatform.h" />
     <ClInclude Include="Game\Game.hpp" />
     <ClInclude Include="Game\GameObject.hpp" />
+    <ClInclude Include="Game\Levels\GenTile.hpp" />
     <ClInclude Include="Game\Levels\Level.hpp" />
+    <ClInclude Include="Game\Levels\Tile.hpp" />
     <ClInclude Include="Game\Sprite\SpriteRenderer.hpp" />
     <ClInclude Include="Headers\Buffer\VertexBuffer\VertexBuffer.hpp" />
     <ClInclude Include="Headers\Buffer\VertexBuffer\VertexBufferLayout.hpp" />
@@ -608,12 +610,17 @@
     <None Include="Dependencies\include\glm\gtx\vector_query.inl" />
     <None Include="Dependencies\include\glm\gtx\wrap.inl" />
     <None Include="Dependencies\lib\glfw3.pdb" />
+    <None Include="Resources\Levels\1.lvl" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="Resources\Sprite\Shaders\FragmentShader.glsl" />
     <Text Include="Resources\Sprite\Shaders\VertexShader.glsl" />
   </ItemGroup>
   <ItemGroup>
+    <Image Include="Resources\background.jpg" />
+    <Image Include="Resources\Blocks\block.png" />
+    <Image Include="Resources\Blocks\block_solid.png" />
+    <Image Include="Resources\default.jpg" />
     <Image Include="Resources\Sprite\Textures\awesomeface.png" />
     <Image Include="Resources\Sprite\Textures\instagram.png" />
     <Image Include="Resources\Sprite\Textures\soccer_ball.jpg" />

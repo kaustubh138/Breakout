@@ -909,6 +909,15 @@
     <ClInclude Include="Game\GameObject.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Game\Levels\Level.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\Levels\GenTile.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\Levels\Tile.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Headers\Buffer\VertexBuffer\VertexBuffer.cpp">
@@ -945,6 +954,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Game\Game.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\Levels\Level.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -1358,6 +1370,7 @@
       <Filter>Header Files</Filter>
     </None>
     <None Include="Dependencies\lib\glfw3.pdb" />
+    <None Include="Resources\Levels\1.lvl" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="Resources\Sprite\Shaders\FragmentShader.glsl" />
@@ -1371,6 +1384,18 @@
       <Filter>Resource Files</Filter>
     </Image>
     <Image Include="Resources\Sprite\Textures\soccer_ball.jpg">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\Blocks\block.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\Blocks\block_solid.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\background.jpg">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\default.jpg">
       <Filter>Resource Files</Filter>
     </Image>
   </ItemGroup>

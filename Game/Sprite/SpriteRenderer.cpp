@@ -9,14 +9,14 @@ void SpriteRenderer::init()
 	m_VAO->AddBuffer(*m_VBO, Layout);
 }
 
-SpriteRenderer::SpriteRenderer(std::shared_ptr<Shader> shader, std::shared_ptr<Texture> texture)
+SpriteRenderer::SpriteRenderer(std::shared_ptr<Shader> shader)
 {
 	m_Shader = shader;
-	m_Texture = texture;
+	m_Texture = std::make_shared<Texture>("Resources/default.jpg", "default");
 	init();
 }
 
-void SpriteRenderer::DrawSprite(glm::vec2 position, glm::vec2 size, float rotate, glm::vec3 color)
+void SpriteRenderer::DrawSprite(std::shared_ptr<Texture> texture, glm::vec2 position, glm::vec2 size, float rotate, glm::vec3 color)
 {
 	/*
 		Model Matrix:
@@ -38,7 +38,7 @@ void SpriteRenderer::DrawSprite(glm::vec2 position, glm::vec2 size, float rotate
 	
 	model = glm::scale(model, glm::vec3(size, 1.0f));
 
-	m_Texture->Bind();
+	texture->Bind();
 
 	m_Shader->Bind();
 	m_Shader->SetMatrix<glm::mat4>("model", model, MATRIX_4F);
