@@ -24,7 +24,7 @@ public:
 	~Game();
 
 	void init();
-	void ProcessInput(float dt);
+	void ProcessInput(GLFWwindow* window, float dt);
 	void Update(float dt);
 	void Render();
 };

@@ -918,6 +918,9 @@
     <ClInclude Include="Game\Levels\Tile.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Game\Paddle\Paddle.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Headers\Buffer\VertexBuffer\VertexBuffer.cpp">
@@ -1396,6 +1399,9 @@
       <Filter>Resource Files</Filter>
     </Image>
     <Image Include="Resources\default.jpg">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\Paddle\paddle.png">
       <Filter>Resource Files</Filter>
     </Image>
   </ItemGroup>

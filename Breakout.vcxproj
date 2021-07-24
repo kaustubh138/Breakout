@@ -446,6 +446,7 @@
     <ClInclude Include="Game\Levels\GenTile.hpp" />
     <ClInclude Include="Game\Levels\Level.hpp" />
     <ClInclude Include="Game\Levels\Tile.hpp" />
+    <ClInclude Include="Game\Paddle\Paddle.hpp" />
     <ClInclude Include="Game\Sprite\SpriteRenderer.hpp" />
     <ClInclude Include="Headers\Buffer\VertexBuffer\VertexBuffer.hpp" />
     <ClInclude Include="Headers\Buffer\VertexBuffer\VertexBufferLayout.hpp" />
@@ -621,6 +622,7 @@
     <Image Include="Resources\Blocks\block.png" />
     <Image Include="Resources\Blocks\block_solid.png" />
     <Image Include="Resources\default.jpg" />
+    <Image Include="Resources\Paddle\paddle.png" />
     <Image Include="Resources\Sprite\Textures\awesomeface.png" />
     <Image Include="Resources\Sprite\Textures\instagram.png" />
     <Image Include="Resources\Sprite\Textures\soccer_ball.jpg" />
