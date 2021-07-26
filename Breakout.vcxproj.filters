@@ -1380,6 +1380,7 @@
     </None>
     <None Include="Dependencies\lib\glfw3.pdb" />
     <None Include="Resources\Levels\1.lvl" />
+    <None Include="Game\Collision\Collision.hpp" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="Resources\Sprite\Shaders\FragmentShader.glsl" />

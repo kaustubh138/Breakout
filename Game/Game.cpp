@@ -1,6 +1,7 @@
 #include "Game.hpp"
 #include "Paddle/Paddle.hpp"
 #include "Ball/Ball.hpp"
+#include "Collision/Collision.hpp"
 #include "Sprite/SpriteRenderer.hpp"
 #include "ResourceManager/ResourceManager.hpp"
 #include "Levels/Level.hpp"
@@ -63,10 +64,11 @@ void Game::init()
 	RenderData::Background = std::make_shared<Texture>("Resources/background.jpg", "Background");
 
 	// Level
-	Level level1;
-	level1.LoadLevelFromFile("Resources/Levels/1.lvl", m_Width, m_Height);
+	//Level level1;
+	m_Level.LoadLevelFromFile("Resources/Levels/1.lvl", m_Width, m_Height);
+	m_CurrentLevel = 1;
 
-	m_Levels.push_back(level1);
+	//m_Levels.push_back(level1);
 
 	// Paddle
 	PaddleData::PaddleTexture = std::make_shared<Texture>("Resources/Paddle/paddle.png", "Paddle");
@@ -103,9 +105,27 @@ void Game::ProcessInput(GLFWwindow* window, float dt)
 	}
 }
 
+void Game::PollCollisions()
+{
+	for (Tile& tile : m_Level)
+	{
+		if (!tile.GetDestroyed())
+		{
+			if (CheckCollision(tile, *GameData::Ball))
+			{
+				if (!tile.GetSolidity())
+				{
+					tile.Destroy();
+				}
+			}
+		}
+	}
+}
+
 void Game::Update(GLFWwindow* window, float dt)
 {
 	GameData::Ball->Move(window, dt, m_Width, m_Height, GameData::Player->m_Position ,GameData::PaddleData::PlayerSize);
+	PollCollisions();
 }
 
 void Game::Render()
@@ -123,8 +143,9 @@ void Game::Render()
 		GameData::Player->DrawObject(GameData::Renderer);
 
 		// bricks
-		m_Levels[m_CurrentLevel].Draw(GameData::Renderer);
+		m_Level.Draw(GameData::Renderer);
 
 		GameData::Ball->DrawObject(GameData::Renderer);
 	}
 }
+

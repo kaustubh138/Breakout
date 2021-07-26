@@ -19,6 +19,11 @@ public:
 	void init(unsigned int ScreenWidth, unsigned int ScreenHeight);
 
 	void Draw(std::shared_ptr<SpriteRenderer>& renderer);
+	
+	// vector iterator wrapper
+	using IteratorType = std::vector<Tile>;
+	IteratorType::iterator begin() { return m_Tiles.begin(); };
+	IteratorType::iterator end() { return m_Tiles.end(); };
 };
 
 #endif //! LEVEL_H

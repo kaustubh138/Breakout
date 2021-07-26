@@ -16,6 +16,7 @@ protected:
 	glm::vec3 m_Color;
 	float m_Rotation;
 	bool IsDestroyed;
+	bool IsSolid;
 	std::shared_ptr<Texture> m_Texture;
 
 public:
@@ -24,7 +25,23 @@ public:
 		renderer->DrawSprite(m_Texture, m_Position, m_Size, m_Rotation, m_Color);
 	}
 	
+	/* Utilities */
 	inline bool GetDestroyed() { return IsDestroyed; };
+	inline void Destroy() { IsDestroyed = true; };
+	inline glm::vec2 GetPosition() { return m_Position; };
+	inline bool GetSolidity() { return IsSolid; };
+	inline float GetAABB(char axis) 
+	{ 
+		switch (axis)
+		{
+			case('x'):
+				return m_Position.x + m_Size.x; 
+			case ('y'):
+				return m_Position.y + m_Size.y;
+			default:
+				return 0.0f;
+		}
+	};
 };
 
 class NormalTile
@@ -46,6 +63,7 @@ public:
 		m_Velocity = velocity;
 		m_Rotation = rotation;
 		IsDestroyed = destroyed;
+		IsSolid = false;
 	}
 };
 
@@ -68,6 +86,7 @@ public:
 		m_Velocity = velocity;
 		m_Rotation = rotation;
 		IsDestroyed = destroyed;
+		IsSolid = true;
 	}
 };
 
