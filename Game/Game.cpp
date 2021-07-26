@@ -1,5 +1,6 @@
 #include "Game.hpp"
 #include "Paddle/Paddle.hpp"
+#include "Ball/Ball.hpp"
 #include "Sprite/SpriteRenderer.hpp"
 #include "ResourceManager/ResourceManager.hpp"
 #include "Levels/Level.hpp"
@@ -7,6 +8,8 @@
 namespace GameData
 {
 	std::shared_ptr<SpriteRenderer> Renderer;
+	std::shared_ptr<Paddle> Player;
+	std::shared_ptr<BallObject> Ball;
 
 	namespace RenderData
 	{
@@ -16,12 +19,17 @@ namespace GameData
 
 	namespace PaddleData
 	{
-		const glm::vec2 PLAYER_SIZE(100.0f, 20.0f);
-		const float PLAYER_VELOCITY(500.0f);
+		const glm::vec2 PlayerSize(100.0f, 20.0f);
+		const glm::vec2 PlayerVelocity(500.0f, 0.0f);
 		std::shared_ptr<Texture> PaddleTexture;
 	}
 
-	std::shared_ptr<Paddle> Player;
+	namespace BallData
+	{
+		const glm::vec2 InitBallVelocity(100.0f, -350.0f);
+		const float BallRadius = 12.5f;
+		std::shared_ptr<Texture> BallTexture;
+	}
 }
 
 Game::Game(unsigned int width, unsigned int height)
@@ -35,6 +43,7 @@ Game::~Game()
 
 void Game::init()
 {
+	using namespace GameData;
 	// Sprite: Ball
 	glm::mat4 projection = glm::ortho(0.0f, static_cast<float>(this->m_Width), static_cast<float>(this->m_Height), 0.0f, -1.0f, 1.0f);
 
@@ -46,12 +55,12 @@ void Game::init()
 	SpriteShader->SetInteger("sprite", 0);
 	SpriteShader->SetMatrix<glm::mat4>("projection", projection, MATRIX_4F);
 
-	GameData::RenderData::SpriteTexture = std::make_shared<Texture>("Resources/Sprite/Textures/awesomeface.png", "SpriteTexture");
+	//RenderData::SpriteTexture = std::make_shared<Texture>("Resources/Sprite/Textures/awesomeface.png", "SpriteTexture");
 
-	GameData::Renderer = std::make_shared<SpriteRenderer>(SpriteShader);
+	Renderer = std::make_shared<SpriteRenderer>(SpriteShader);
 	
 	// Background
-	GameData::RenderData::Background = std::make_shared<Texture>("Resources/background.jpg", "Background");
+	RenderData::Background = std::make_shared<Texture>("Resources/background.jpg", "Background");
 
 	// Level
 	Level level1;
@@ -60,8 +69,13 @@ void Game::init()
 	m_Levels.push_back(level1);
 
 	// Paddle
-	GameData::PaddleData::PaddleTexture = std::make_shared<Texture>("Resources/Paddle/paddle.png", "Paddle");
-	GameData::Player = std::make_shared<Paddle>(GameData::PaddleData::PaddleTexture, m_Width, m_Height, GameData::PaddleData::PLAYER_SIZE, GameData::PaddleData::PLAYER_VELOCITY);
+	PaddleData::PaddleTexture = std::make_shared<Texture>("Resources/Paddle/paddle.png", "Paddle");
+	Player = std::make_shared<Paddle>(GameData::PaddleData::PaddleTexture, m_Width, m_Height, GameData::PaddleData::PlayerSize, GameData::PaddleData::PlayerVelocity);
+	
+	// Ball
+	BallData::BallTexture = std::make_shared<Texture>("Resources/Ball/awesomeface.png", "Ball");
+	glm::vec2 BallPosition = Player->m_Position + glm::vec2(PaddleData::PlayerSize.x / 2.0f - BallData::BallRadius, -BallData::BallRadius * 2.0f);
+	Ball = std::make_shared<BallObject>(GameData::BallData::BallTexture, BallPosition, BallData::BallRadius, BallData::InitBallVelocity);
 }
 
 void Game::ProcessInput(GLFWwindow* window, float dt)
@@ -69,7 +83,7 @@ void Game::ProcessInput(GLFWwindow* window, float dt)
 	using namespace GameData;
 	if (State == GameState::ACTIVE)
 	{
-		float velocity = Player->m_Velocity * dt;
+		float velocity = Player->m_Velocity.x * dt;
 		
 		// move playerboard
 		if (glfwGetKey(window, GLFW_KEY_A) == GLFW_PRESS)
@@ -82,11 +96,16 @@ void Game::ProcessInput(GLFWwindow* window, float dt)
 			if (Player->m_Position.x <= m_Width - Player->m_Size.x)
 				Player->m_Position.x += velocity;
 		}
+		if (glfwGetKey(window, GLFW_KEY_SPACE) == GLFW_PRESS)
+		{
+			Ball->Release();
+		}
 	}
 }
 
-void Game::Update(float dt)
+void Game::Update(GLFWwindow* window, float dt)
 {
+	GameData::Ball->Move(window, dt, m_Width, m_Height, GameData::Player->m_Position ,GameData::PaddleData::PlayerSize);
 }
 
 void Game::Render()
@@ -105,5 +124,7 @@ void Game::Render()
 
 		// bricks
 		m_Levels[m_CurrentLevel].Draw(GameData::Renderer);
+
+		GameData::Ball->DrawObject(GameData::Renderer);
 	}
 }

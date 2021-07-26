@@ -921,6 +921,9 @@
     <ClInclude Include="Game\Paddle\Paddle.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Game\Ball\Ball.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Headers\Buffer\VertexBuffer\VertexBuffer.cpp">
@@ -960,6 +963,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Game\Levels\Level.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\Ball\Ball.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -1380,7 +1386,7 @@
     <Text Include="Resources\Sprite\Shaders\VertexShader.glsl" />
   </ItemGroup>
   <ItemGroup>
-    <Image Include="Resources\Sprite\Textures\awesomeface.png">
+    <Image Include="Resources\Ball\awesomeface.png">
       <Filter>Resource Files</Filter>
     </Image>
     <Image Include="Resources\Sprite\Textures\instagram.png">
@@ -1402,6 +1408,9 @@
       <Filter>Resource Files</Filter>
     </Image>
     <Image Include="Resources\Paddle\paddle.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\background2.jpg">
       <Filter>Resource Files</Filter>
     </Image>
   </ItemGroup>

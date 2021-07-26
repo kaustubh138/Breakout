@@ -25,6 +25,6 @@ public:
 
 	void init();
 	void ProcessInput(GLFWwindow* window, float dt);
-	void Update(float dt);
+	void Update(GLFWwindow* window, float dt);
 	void Render();
 };

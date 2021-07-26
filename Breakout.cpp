@@ -46,14 +46,23 @@ int main()
 	
 	Breakout.init();
 
+	float DeltaTime = 0.0f;
+	float LastFrame = 0.0f;
+	
 	while (!glfwWindowShouldClose(window))
 	{
+		float CurrentFrame = glfwGetTime();
+		DeltaTime = CurrentFrame - LastFrame;
+		LastFrame = CurrentFrame;
+
+		glfwPollEvents();
 		processInput(window);
-		Breakout.ProcessInput(window, 0.01f);
+		Breakout.ProcessInput(window, DeltaTime);
 
 		glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
 		glClear(GL_COLOR_BUFFER_BIT);
 
+		Breakout.Update(window, DeltaTime);
 		Breakout.Render();
 	
 		glfwSwapBuffers(window);

@@ -10,7 +10,7 @@ class GameObject
 {
 public:
 	glm::vec2 m_Position, m_Size;
-	float m_Velocity;
+	glm::vec2 m_Velocity;
 	glm::vec3 m_Color;
 	float m_Rotation = 0.0f;
 	bool IsDestroyed;

@@ -14,7 +14,7 @@ private:
 	unsigned int ScreenHeight;
 public:
 	Paddle(std::shared_ptr<Texture>& PaddleTexture, unsigned int& ScreenWidth, unsigned int& ScreenHeight, 
-		glm::vec2 Size = glm::vec2(100.0f, 20.0f), float Velocity = 500.0f, glm::vec3 Color = glm::vec3(1.0f))
+		glm::vec2 Size = glm::vec2(100.0f, 20.0f), glm::vec2 Velocity = glm::vec2(500.0f, 0.0f), glm::vec3 Color = glm::vec3(1.0f))
 	{
 		ScreenWidth = ScreenWidth;
 		ScreenHeight = ScreenHeight;

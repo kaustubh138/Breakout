@@ -441,6 +441,7 @@
     <ClInclude Include="Dependencies\include\glm\vec4.hpp" />
     <ClInclude Include="Dependencies\include\glm\vector_relational.hpp" />
     <ClInclude Include="Dependencies\include\KHR\khrplatform.h" />
+    <ClInclude Include="Game\Ball\Ball.hpp" />
     <ClInclude Include="Game\Game.hpp" />
     <ClInclude Include="Game\GameObject.hpp" />
     <ClInclude Include="Game\Levels\GenTile.hpp" />
@@ -462,6 +463,7 @@
     <ClCompile Include="Breakout.cpp" />
     <ClCompile Include="Dependencies\include\glad\glad.c" />
     <ClCompile Include="Dependencies\include\glm\detail\glm.cpp" />
+    <ClCompile Include="Game\Ball\Ball.cpp" />
     <ClCompile Include="Game\Game.cpp" />
     <ClCompile Include="Game\Levels\Level.cpp" />
     <ClCompile Include="Game\Sprite\SpriteRenderer.cpp" />
@@ -619,11 +621,12 @@
   </ItemGroup>
   <ItemGroup>
     <Image Include="Resources\background.jpg" />
+    <Image Include="Resources\background2.jpg" />
     <Image Include="Resources\Blocks\block.png" />
     <Image Include="Resources\Blocks\block_solid.png" />
     <Image Include="Resources\default.jpg" />
     <Image Include="Resources\Paddle\paddle.png" />
-    <Image Include="Resources\Sprite\Textures\awesomeface.png" />
+    <Image Include="Resources\Ball\awesomeface.png" />
     <Image Include="Resources\Sprite\Textures\instagram.png" />
     <Image Include="Resources\Sprite\Textures\soccer_ball.jpg" />
   </ItemGroup>
