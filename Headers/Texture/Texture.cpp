@@ -8,7 +8,7 @@ Texture::Texture(const std::string& path, const std::string& name)
 	: m_TextureID(0), m_FilePath(path), name(name), m_Width(0), m_Height(0), m_BPP(0)
 {
 	stbi_set_flip_vertically_on_load(1);
-	unsigned char* LocalBuffer = stbi_load(path.c_str(), &m_Width, &m_Height, &m_BPP, 3);
+	unsigned char* LocalBuffer = stbi_load(path.c_str(), &m_Width, &m_Height, &m_BPP, 4);
 
 	glGenTextures(1, &m_TextureID);
 	glBindTexture(GL_TEXTURE_2D, m_TextureID);
@@ -20,7 +20,7 @@ Texture::Texture(const std::string& path, const std::string& name)
 	
 	if (LocalBuffer)
 	{
-		glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, m_Width, m_Height, 0, GL_RGB, GL_UNSIGNED_BYTE, LocalBuffer);
+		glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, m_Width, m_Height, 0, GL_RGBA, GL_UNSIGNED_BYTE, LocalBuffer);
 	}
 	else
 		std::cerr << "[ERROR] Failed to load " << name << " texture" << std::endl;
