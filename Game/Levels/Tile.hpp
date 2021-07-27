@@ -24,23 +24,27 @@ public:
 	{
 		renderer->DrawSprite(m_Texture, m_Position, m_Size, m_Rotation, m_Color);
 	}
-	
+
 	/* Utilities */
 	inline bool GetDestroyed() { return IsDestroyed; };
 	inline void Destroy() { IsDestroyed = true; };
 	inline glm::vec2 GetPosition() { return m_Position; };
 	inline bool GetSolidity() { return IsSolid; };
-	inline float GetAABB(char axis) 
-	{ 
-		switch (axis)
-		{
-			case('x'):
-				return m_Position.x + m_Size.x; 
-			case ('y'):
-				return m_Position.y + m_Size.y;
-			default:
-				return 0.0f;
-		}
+
+	// AABB Data
+	inline glm::vec2 GetHalfExtents()
+	{
+		return glm::vec2(
+			m_Size.x / 2.0f,
+			m_Size.y / 2.0f);
+	};
+
+	inline glm::vec2 GetCenter(glm::vec2 HalfExtents)
+	{
+		return glm::vec2(
+			m_Position.x + HalfExtents.x,
+			m_Position.y + HalfExtents.y
+		);
 	};
 };
 

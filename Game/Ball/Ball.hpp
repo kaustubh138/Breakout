@@ -19,8 +19,10 @@ class BallObject
 {
 private:
 	OriginalData* OData;
-	float m_Radius;
 	bool IsStuck = true;
+
+public:
+	float m_Radius;
 
 public:
 	BallObject(std::shared_ptr<Texture> BallTexture, glm::vec2 Position, float Radius, glm::vec2 Velocity);
@@ -49,18 +51,8 @@ public:
 		return PaddlePosition + glm::vec2(PaddleSize.x / 2.0f - m_Radius, -m_Radius * 2.0f);
 	}
 
-	inline float GetAABB(char axis)
-	{
-		switch (axis)
-		{
-			case ('x'):
-				return m_Position.x + m_Size.x;
-			case ('y'):
-				return m_Position.y + m_Size.y;
-			default:
-				return 0.0f;
-		}
-	}
+	// AABB Data
+	inline glm::vec2 GetCenter() { return m_Position + m_Radius; };
 };
 
 #endif // !BALL_H
