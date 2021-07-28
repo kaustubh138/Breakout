@@ -29,6 +29,27 @@ public:
 	{
 		Renderer->DrawSprite(m_Texture, m_Position, m_Size, m_Rotation, m_Color);
 	}
+
+	// AABB Data
+	inline glm::vec2 GetHalfExtents()
+	{
+		return glm::vec2(
+			m_Size.x / 2.0f,
+			m_Size.y / 2.0f);
+	};
+
+	inline glm::vec2 GetCenter(glm::vec2 HalfExtents)
+	{
+		return glm::vec2(
+			m_Position.x + HalfExtents.x,
+			m_Position.y + HalfExtents.y
+		);
+	};
+
+	inline float GetCenter()
+	{
+		return m_Position.x + m_Size.x / 2.0f;
+	};
 };
 
 #endif PADDLE_H

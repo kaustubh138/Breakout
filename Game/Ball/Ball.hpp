@@ -39,6 +39,7 @@ public:
 
 	/* Utilities */
 	inline void Release() { IsStuck = false; };
+	inline bool GetStuck() { return IsStuck; };
 	inline glm::vec2 GetPosition() { return m_Position; };
 
 	inline glm::vec2 ComputePosition(glm::vec2 PaddlePosition, glm::vec2 PaddleSize)

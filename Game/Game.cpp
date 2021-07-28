@@ -107,18 +107,66 @@ void Game::ProcessInput(GLFWwindow* window, float dt)
 
 void Game::PollCollisions()
 {
+	using namespace GameData;
 	for (Tile& tile : m_Level)
 	{
 		if (!tile.GetDestroyed())
 		{
-			if (CheckCollision(tile, *GameData::Ball))
+			CollisionInfo Collision = CheckCollision<Tile>(tile, *GameData::Ball);
+			if (std::get<0>(Collision))
 			{
 				if (!tile.GetSolidity())
-				{
 					tile.Destroy();
+				
+				// collision resolution
+				Direction CollisionDirection = std::get<1>(Collision);
+				glm::vec2 DiffrenceVector = std::get<2>(Collision);
+
+				if (CollisionDirection == Direction::LEFT || CollisionDirection == Direction::RIGHT)
+				{
+					Ball->m_Velocity.x = -Ball->m_Velocity.x; 
+					
+					// Reposition Ball outside the tile
+					float Offset = Ball->m_Radius - std::abs(DiffrenceVector.x);
+					
+					if (CollisionDirection == Direction::LEFT)
+						Ball->m_Position.x += Offset; 
+					else
+						Ball->m_Position.x -= Offset; 				
+				}
+				else
+				{
+					Ball->m_Velocity.y = -Ball->m_Velocity.y;
+					
+					// Reposition Ball outside the tile
+					float Offset = Ball->m_Radius - std::abs(DiffrenceVector.y);
+	
+					if (CollisionDirection == Direction::UP)
+						Ball->m_Position.y -= Offset;
+					else
+						Ball->m_Position.y += Offset;
 				}
 			}
 		}
+	}
+
+	// Collision with Paddle
+	CollisionInfo PaddleCollision = CheckCollision<Paddle>(*Player, *Ball);
+	if (!Ball->GetStuck() && std::get<0>(PaddleCollision))
+	{
+		/*
+			Further the ball hits the paddle stronger its velocity change,
+			since Collision Angle is Larger, Impulse will be greater.
+			Metric for increasing as Percentage Far Away is thus a suitable choice.
+		*/
+
+		float PaddleCenter = Player->GetCenter();
+		float CollisionPosition = (Ball->m_Position.x + Ball->m_Radius) - PaddleCenter;
+		
+		float PercentageFar = CollisionPosition / (Player->m_Size.x / 2.0f);
+	
+		Ball->m_Velocity.x = BallData::InitBallVelocity.x * PercentageFar * 2.0f; // Increase the velocity by a factor of 2
+		Ball->m_Velocity.y = -Ball->m_Velocity.y;
 	}
 }
 
