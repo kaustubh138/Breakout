@@ -7,6 +7,7 @@
 #include "Texture/Texture.hpp"
 #include "Renderer.hpp"
 #include "Sprite/SpriteRenderer.hpp"
+#include "ResourceManager/ResourceManager.hpp"
 #include <memory>
 
 class Tile
@@ -60,7 +61,7 @@ public:
 		bool destroyed = false
 	)
 	{
-		m_Texture = std::make_shared<Texture>("Resources/Blocks/block.png", "Block");
+		m_Texture = ResourceManager::GetTexture("Block");
 		m_Position = pos,
 		m_Size = size;
 		m_Color = color;
@@ -83,7 +84,7 @@ public:
 		bool destroyed = false
 	)
 	{
-		m_Texture = std::make_shared<Texture>("Resources/Blocks/block_solid.png", "SolidBlock");
+		m_Texture = ResourceManager::GetTexture("SolidBlock");
 		m_Position = pos;
 		m_Size = size;
 		m_Color = color;

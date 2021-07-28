@@ -18,6 +18,12 @@ namespace GameData
 		std::shared_ptr<Texture> Background;
 	}
 
+	namespace TileData
+	{
+		std::shared_ptr<Texture> SolidTileTexture;
+		std::shared_ptr<Texture> NormalTileTexture;
+	}
+
 	namespace PaddleData
 	{
 		const glm::vec2 PlayerSize(100.0f, 20.0f);
@@ -56,19 +62,16 @@ void Game::init()
 	SpriteShader->SetInteger("sprite", 0);
 	SpriteShader->SetMatrix<glm::mat4>("projection", projection, MATRIX_4F);
 
-	//RenderData::SpriteTexture = std::make_shared<Texture>("Resources/Sprite/Textures/awesomeface.png", "SpriteTexture");
-
 	Renderer = std::make_shared<SpriteRenderer>(SpriteShader);
 	
 	// Background
 	RenderData::Background = std::make_shared<Texture>("Resources/background.jpg", "Background");
 
 	// Level
-	//Level level1;
+	TileData::SolidTileTexture = std::make_shared<Texture>("Resources/Blocks/block.png", "Block");
+	TileData::NormalTileTexture = std::make_shared<Texture>("Resources/Blocks/block_solid.png", "SolidBlock");
 	m_Level.LoadLevelFromFile("Resources/Levels/1.lvl", m_Width, m_Height);
 	m_CurrentLevel = 1;
-
-	//m_Levels.push_back(level1);
 
 	// Paddle
 	PaddleData::PaddleTexture = std::make_shared<Texture>("Resources/Paddle/paddle.png", "Paddle");
