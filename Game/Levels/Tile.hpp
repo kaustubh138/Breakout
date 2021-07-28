@@ -35,8 +35,8 @@ public:
 	inline glm::vec2 GetHalfExtents()
 	{
 		return glm::vec2(
-			m_Size.x / 2.0f,
-			m_Size.y / 2.0f);
+			m_Position.x / 2.0f,
+			m_Position.y / 2.0f);
 	};
 
 	inline glm::vec2 GetCenter(glm::vec2 HalfExtents)
