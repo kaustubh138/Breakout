@@ -165,8 +165,13 @@ void Game::PollCollisions()
 		
 		float PercentageFar = CollisionPosition / (Player->m_Size.x / 2.0f);
 	
+		glm::vec2 VelocityCopy = Ball->m_Velocity;
+
 		Ball->m_Velocity.x = BallData::InitBallVelocity.x * PercentageFar * 2.0f; // Increase the velocity by a factor of 2
 		Ball->m_Velocity.y = -Ball->m_Velocity.y;
+	
+		// Adjusting y-coord according to changing x-coord
+		Ball->m_Velocity = glm::normalize(Ball->m_Velocity) * glm::length(VelocityCopy);
 	}
 }
 
