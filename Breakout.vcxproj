@@ -471,7 +471,6 @@
     <ClCompile Include="Headers\Containers\VertexArray.cpp" />
     <ClCompile Include="Headers\ResourceManager\ResourceManager.cpp" />
     <ClCompile Include="Headers\Shader\Shader.cpp" />
-    <ClCompile Include="TestApplicaton.cpp" />
     <ClCompile Include="Headers\Texture\Texture.cpp" />
     <ClCompile Include="Vendor\stb_image\stb_image.cpp" />
   </ItemGroup>

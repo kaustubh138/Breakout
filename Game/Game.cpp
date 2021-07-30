@@ -91,12 +91,12 @@ void Game::ProcessInput(GLFWwindow* window, float dt)
 		float velocity = Player->m_Velocity.x * dt;
 		
 		// move playerboard
-		if (glfwGetKey(window, GLFW_KEY_A) == GLFW_PRESS)
+		if (glfwGetKey(window, GLFW_KEY_LEFT) == GLFW_PRESS)
 		{
 			if (Player->m_Position.x >= 0.0f)
 				Player->m_Position.x -= velocity;
 		}
-		if (glfwGetKey(window, GLFW_KEY_D) == GLFW_PRESS)
+		if (glfwGetKey(window, GLFW_KEY_RIGHT) == GLFW_PRESS)
 		{
 			if (Player->m_Position.x <= m_Width - Player->m_Size.x)
 				Player->m_Position.x += velocity;
