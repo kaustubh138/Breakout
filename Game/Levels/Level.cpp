@@ -10,7 +10,7 @@
 	Data format:
 		unsigned long long => 8 bytes => 32 bits
 		tile1 tile2 tile3 tile4 tile5 tile6 tile7 tile8
-		 52		48	 40		32	  24	16	  8		0		  
+		   52    48    40    32	   24    16     8      0		  
 	This imposes a limition of the number of tiles in a row
 */
 
